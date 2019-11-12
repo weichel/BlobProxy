@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	//"fmt"
 	"net"
 	"net/http"
 	"os"
@@ -15,12 +16,10 @@ import (
 type server struct {
 	pb.UnimplementedBlobProxyServer
 }
-const port = ":50051"
-
 
 // Create the base uri needed for the Azure Blob Storeage REST call made in the ReadBlob RPC
 var base_uri = strings.Join([]string{"https://",os.Getenv("BLOB_ACCOUNT"),".blob.core.windows.net/",os.Getenv("BLOB_CONTAINER"),"/"},"")
-
+const port = ":1337"
 
 /*******************************************************************
   ReadBlob RPC defined in ./barracuda.proto
@@ -54,7 +53,6 @@ func (s *server) ReadBlob(ctx context.Context, req *pb.ReadBlobRequest) (*pb.Rea
 }
 
 func main() {
-
 	// Start up a tcp socket for the gRPC Service
 	listen, err := net.Listen("tcp", port)
 	if err != nil {
