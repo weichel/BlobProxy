@@ -14,13 +14,25 @@ The Dockerfile in the /go directory will create a golang image with:
 * Server port exposed and set to launch on container startup
 
 1. Create the image from Dockerfile: 'docker install -t server_image'
-2. Next, start the server container: 'docker run -it -p 1337:1337 server_image'
+2. Next, start the server container: 'docker run -it -p 1337:1337 --name Server server_image'
+3. Run the command: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' Server"
+   (We will use this to connect the client container)
 
 
-### [Node.js Developer Tools](https://github.com/docker/labs/blob/master/developer-tools/nodejs-debugging/README.md) including:
-+ Visual Studio Code
+### BlobProxy Client on Docker Container
 
-## Programming languages
+Similar to above, but start with the Dockerfile in /go/client
+
+1. Create the image from Dockerfile: 'docker install -t client_image'
+2. Next, start the server container: 'docker run -it -P client_image <blob.key> <Address from above:port>'
+
+You should see the results of the blob data printed to the screen. 
+
+### Node.js Client
+The node.js client can quickly be used to test the server by running: 'node client <blob.key>'
+
+
+## Running Test Cases
 This is a more comprehensive section detailing how to set-up and optimize your experience using Docker with particular programming languages.
 
 + [Java](java/)
