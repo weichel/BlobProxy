@@ -8,7 +8,14 @@ There is also a node.js package that can be installed run a node server and clie
 
 ### BlobProxy Server on Docker Container
 
-The Dockerfile in the /go directory will start up the 
+The Dockerfile in the /go directory will create a golang image with:
+* Environment variables set appropriately for Azure
+* Latest version of Go, a copy of the BlobProxy source code, and an installation of the BlobProxy
+* Server port exposed and set to launch on container startup
+
+Run the command: 'docker install -t server_image'
+Next, start the server container: 'docker run -it -p 1337:1337 server_image'
+
 
 ### [Node.js Developer Tools](https://github.com/docker/labs/blob/master/developer-tools/nodejs-debugging/README.md) including:
 + Visual Studio Code
