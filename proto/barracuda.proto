@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.barracuda.proto";
+option java_outer_classname = "BarracudaProto";
+package barracuda;
+service BlobProxy {
+    rpc ReadBlob (ReadBlobRequest) returns (ReadBlobResponse) {}
+}
+message ReadBlobRequest {
+    string key = 1;
+}
+message ReadBlobResponse {
+    bytes data = 1;
+}
+
