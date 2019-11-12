@@ -33,7 +33,7 @@ The node.js client can quickly be used to test the server by running: 'node clie
 
 
 ## Running Test Cases
-This is a more comprehensive section detailing how to set-up and optimize your experience using Docker with particular programming languages.
 
-+ [Java](java/)
-+ [Node.js](nodejs/porting/)
+Go makes it very easy to compile and test our project. 
+In the github.com/weichel/BlobProxy directory, run the command: "go test -v ."
+
